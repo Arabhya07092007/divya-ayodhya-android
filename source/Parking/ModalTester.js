@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   Text,
@@ -12,9 +12,10 @@ import {
 } from 'react-native';
 import Modal from 'react-native-modal';
 import PrkDCont from '../Components/ParkingDetail';
-import Icon, {Icons} from '../Components/Icons';
-import {ScrollView} from 'react-native-gesture-handler';
+import Icon, { Icons } from '../Components/Icons';
+import { ScrollView } from 'react-native-gesture-handler';
 import VNumber from '../Components/Vnumber';
+
 
 const timeSlot = [
   '06:00',
@@ -36,16 +37,16 @@ const timeSlot = [
 ];
 
 const calender = [
-  {day: 'Su', date: '22', index: 0},
-  {day: 'Mo', date: '23', index: 1},
-  {day: 'Tu', date: '24', index: 2},
-  {day: 'We', date: '25', index: 3},
-  {day: 'Th', date: '26', index: 4},
-  {day: 'Fr', date: '27', index: 5},
-  {day: 'Sa', date: '28', index: 6},
+  { day: 'Su', date: '22', index: 0 },
+  { day: 'Mo', date: '23', index: 1 },
+  { day: 'Tu', date: '24', index: 2 },
+  { day: 'We', date: '25', index: 3 },
+  { day: 'Th', date: '26', index: 4 },
+  { day: 'Fr', date: '27', index: 5 },
+  { day: 'Sa', date: '28', index: 6 },
 ];
 
-function TmSlotCont({day, date, item}) {
+function TmSlotCont({ day, date, item }) {
   // console.log(item);
 
   return (
@@ -60,13 +61,13 @@ function TmSlotCont({day, date, item}) {
         marginVertical: 5,
         // marginLeft:5
       }}>
-      <Text style={{color: '#777777'}}>{day}</Text>
-      <Text style={{color: '#060606', fontWeight: '700'}}>{date}</Text>
+      <Text style={{ color: '#777777' }}>{day}</Text>
+      <Text style={{ color: '#060606', fontWeight: '700' }}>{date}</Text>
     </TouchableOpacity>
   );
 }
 
-function ModalTester({navigation}) {
+function ModalTester({ navigation }) {
   const [isModalVisible, setModalVisible] = useState(false);
 
   const toggleModal = () => {
@@ -74,7 +75,7 @@ function ModalTester({navigation}) {
   };
 
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={{ flex: 1 }}>
       <StatusBar barStyle={'dark-content'} backgroundColor={'#FDFAE7'} />
       <TouchableOpacity
         style={styles.backdrop}
@@ -99,7 +100,7 @@ function ModalTester({navigation}) {
         }}
         isVisible={isModalVisible}
         hasBackdrop={true}>
-          
+
         <View
           style={{
             flex: 1,
@@ -116,8 +117,8 @@ function ModalTester({navigation}) {
               padding: 20,
             }}>
             <View
-              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-              <Text style={{color: 'black', fontWeight: '600', fontSize: 18}}>
+              style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+              <Text style={{ color: 'black', fontWeight: '600', fontSize: 18 }}>
                 Multi Level Parking Complex
               </Text>
               <TouchableOpacity onPress={toggleModal}>
@@ -136,7 +137,7 @@ function ModalTester({navigation}) {
                 onBackPress={() => {
                   this.props.navigation.goBack();
                 }}
-                onSearchPress={() => {}}
+                onSearchPress={() => { }}
               />
             </View>
             <View>
@@ -152,9 +153,9 @@ function ModalTester({navigation}) {
               </Text>
               <FlatList
                 horizontal={true}
-                contentContainerStyle={{marginTop: 5, paddingLeft: 2}}
+                contentContainerStyle={{ marginTop: 5, paddingLeft: 2 }}
                 data={calender}
-                renderItem={({item}) => (
+                renderItem={({ item }) => (
                   <TmSlotCont day={item.day} date={item.date} item={item} />
                 )}
               />
@@ -187,7 +188,7 @@ function ModalTester({navigation}) {
                 </Text>
               </View>
 
-              <ScrollView style={{height: 90}}>
+              <ScrollView style={{ height: 90 }}>
                 <View
                   style={{
                     flexDirection: 'row',
@@ -204,7 +205,7 @@ function ModalTester({navigation}) {
                         elevation: 1,
                       }}
                       key={index}>
-                      <Text style={{color: '#4D4C4D', fontWeight: '600'}}>
+                      <Text style={{ color: '#4D4C4D', fontWeight: '600' }}>
                         {slot}
                       </Text>
                     </View>
@@ -225,7 +226,7 @@ function ModalTester({navigation}) {
                 Select Vehicle Type
               </Text>
               <View
-                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <TouchableOpacity
                   style={{
                     backgroundColor: '#F3F2F3',
@@ -295,17 +296,18 @@ function ModalTester({navigation}) {
               // bottom:0
 
             }}>
-            <View style={{width: '50%'}}>
-              <Text style={{color: 'white', fontWeight: '700', fontSize: 18}}>
+            <View style={{ width: '50%' }}>
+              <Text style={{ color: 'white', fontWeight: '700', fontSize: 18 }}>
                 ₹108.08
               </Text>
-              <Text style={{fontWeight: '600'}}>Total Amount</Text>
+              <Text style={{ fontWeight: '600' }}>Total Amount</Text>
             </View>
             <TouchableOpacity
               onPress={() => {
                 toggleModal;
                 navigation.navigate('ReviewSm');
               }}
+
               style={{
                 backgroundColor: '#FEEF02',
                 width: '50%',

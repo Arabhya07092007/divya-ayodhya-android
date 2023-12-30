@@ -14,6 +14,34 @@ import {Dimensions} from 'react-native';
 const winWidth = Dimensions.get('window').width;
 const winHeight = Dimensions.get('window').height;
 import Icon, {Icons} from '../Components/Icons';
+import RazorpayCheckout from 'react-native-razorpay';
+
+const handlePayment = () => {
+  const options = {
+    description: 'Sample Payment',
+    image: 'https://media.licdn.com/dms/image/D4D0BAQEwOCpLcUzVIw/company-logo_200_200/0/1702490998502/elarise_logo?e=1712188800&v=beta&t=c-vZj5VfzW2HnVtkUHnYy5OBZ8do7_cpRtByARrnYJs',
+    currency: 'INR',
+    key: 'rzp_test_MsmTvxTjeZV6B4',
+    amount: '10000',
+    name: 'Ayodhya Darshan',
+    prefill: {
+      email: 'test@example.com',
+      contact: '9876543210',
+      name: 'John Doe',
+    },
+    theme: { color: '#FDFAE7' },
+  };
+
+  RazorpayCheckout.open(options)
+    .then((data) => {
+      // Handle success
+      console.log(`Payment success: ${data.razorpay_payment_id}`);
+    })
+    .catch((error) => {
+      // Handle error
+      console.log(`Payment error: ${error.code} | ${error.description}`);
+    });
+};
 
 export default class ReviewSm extends React.Component {
   render() {
@@ -105,6 +133,7 @@ export default class ReviewSm extends React.Component {
 
         <TouchableOpacity
         onPress={()=>{
+          handlePayment();
           this.props.navigation.navigate("Ticket")
         }}
           style={{

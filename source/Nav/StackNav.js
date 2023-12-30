@@ -30,10 +30,6 @@ function StackNav() {
         component={HomeScreen}
         options={{
           headerShown: false,
-          headerStyle: {backgroundColor: '#f1781e'},
-          title: 'Rahat Prahari',
-          headerTitle: props => <HeaderTitle {...props} />,
-          headerRight: () => <HeaderRight />,
         }}
       />
       <Stack.Screen
