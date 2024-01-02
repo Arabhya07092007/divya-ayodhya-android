@@ -9,12 +9,15 @@ import {
   SafeAreaView,
   StatusBar,
   StyleSheet,
+  TextInput,
 } from 'react-native';
 import Modal from 'react-native-modal';
-import PrkDCont from '../Components/ParkingDetail';
 import Icon, { Icons } from '../Components/Icons';
 import { ScrollView } from 'react-native-gesture-handler';
 import VNumber from '../Components/Vnumber';
+import { Dimensions } from 'react-native';
+const winWidth = Dimensions.get('window').width;
+const winHeight = Dimensions.get('window').height;
 
 
 const timeSlot = [
@@ -46,8 +49,21 @@ const calender = [
   { day: 'Sa', date: '28', index: 6 },
 ];
 
+function renderItem({ item }) {
+  return (
+    <View style={{ width: winWidth, }}>
+      <Image
+        source={{
+          uri: item,
+        }}
+        style={Styles.cmplx}
+      />
+
+    </View>
+  );
+}
+
 function TmSlotCont({ day, date, item }) {
-  // console.log(item);
 
   return (
     <TouchableOpacity
@@ -67,19 +83,33 @@ function TmSlotCont({ day, date, item }) {
   );
 }
 
-function ModalTester({ navigation }) {
+function ModalTester({ navigation, route }) {
   const [isModalVisible, setModalVisible] = useState(false);
+  const { parkingComplex } = route.params;
+  const data = parkingComplex;
+
+  const [vehicleNo, setVehicleNo] = useState('UP 42 AD 0007');
+  const [vehicleType, setVehicleType] = useState('four wheeler');
+  const [date, setDate] = useState('01 January, 2024');
+  const [slot, setSlot] = useState('09:00PM - 11:00PM');
+  const [amount, setAmount] = useState(100);
+  const [name, setName] = useState('Vashudev');
+  const [phoneNo, setPhoneNo] = useState('+91 123 456 7890');
+  const [startTime, setStartTime] = useState('1234567890');
+  const [endTime, setEndTime] = useState('1234567890');
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
+  console.log("fetching parking details");
+  console.log(parkingComplex);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <StatusBar barStyle={'dark-content'} backgroundColor={'#FDFAE7'} />
       <TouchableOpacity
         style={styles.backdrop}
-        onPress={() => this.props.navigation.goBack()}>
+        onPress={() => navigation.goBack()}>
         <Icon
           type={Icons.Ionicons}
           name={'arrow-back-outline'}
@@ -87,16 +117,243 @@ function ModalTester({ navigation }) {
           size={25}
         />
       </TouchableOpacity>
-      <PrkDCont onPress={toggleModal} />
+      {/* <PrkDCont onPress={toggleModal} data={parkingComplex} /> */}
+
+      <View style={Styles.cont}>
+        <View>
+          <FlatList
+            data={data.images}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.toString()}
+            horizontal={true}
+            pagingEnabled={true}
+          />
+
+          <View style={Styles.indicators}>
+            <View style={Styles.circles} />
+            <View style={Styles.circles} />
+            <View style={Styles.circles} />
+            <View style={Styles.circles} />
+          </View>
+
+          <View style={{ marginHorizontal: 15 }}>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                marginTop: 10,
+              }}>
+              <Text style={Styles.prkName}>{data.name}</Text>
+              <TouchableOpacity>
+                <Icon
+                  type={Icons.Ionicons}
+                  name={'bookmark'}
+                  color="#f1781e"
+                  size={27}
+                />
+              </TouchableOpacity>
+            </View>
+            <Text style={Styles.txt1}>{data.address}</Text>
+
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                marginTop: 10,
+                marginBottom: 10,
+              }}>
+              <View style={{ flexDirection: 'row' }}>
+                <Icon
+                  type={Icons.Ionicons}
+                  name={'car-outline'}
+                  color="white"
+                  size={27}
+                  style={{
+                    backgroundColor: '#f1781e',
+                    borderRadius: 5,
+                    paddingHorizontal: 1,
+                    marginRight: 5,
+                  }}
+                />
+                <View
+                  style={{
+                    borderWidth: 2,
+                    borderColor: 'green',
+                    justifyContent: 'center',
+                    borderRadius: 5,
+                  }}>
+                  <Text
+                    style={{
+                      color: 'green',
+                      paddingHorizontal: 5,
+                    }}>
+                    {data.availableSlots}
+                  </Text>
+                </View>
+                <View style={{ justifyContent: 'center' }}>
+                  <Text
+                    style={[Styles.txt1, { color: 'green', fontWeight: '600' }]}>
+                    {' '}
+                    Available Spots
+                  </Text>
+                </View>
+              </View>
+
+              <View style={{ flexDirection: 'row' }}>
+                <Icon
+                  type={Icons.MaterialIcons}
+                  name={'route'}
+                  color="white"
+                  size={27}
+                  style={{
+                    backgroundColor: '#f1781e',
+                    borderRadius: 5,
+                    paddingHorizontal: 1,
+                    marginRight: 5,
+                  }}
+                />
+                <View style={{ justifyContent: 'center' }}>
+                  <Text style={Styles.txt1}>4.2 km away</Text>
+                </View>
+              </View>
+            </View>
+          </View>
+
+          {/*  */}
+
+          <View
+            style={{
+              flexDirection: 'row',
+              backgroundColor: '#F4F4F4',
+              // backgroundColor:'red',
+              justifyContent: 'space-between',
+              marginTop: 10,
+              paddingVertical: 10,
+              paddingHorizontal: 15,
+            }}>
+            <View style={{ flexDirection: 'row' }}>
+              <Icon
+                type={Icons.Ionicons}
+                name={'call-outline'}
+                size={22}
+                color={'white'}
+                style={{
+                  backgroundColor: '#f1781e',
+                  borderRadius: 50,
+                  padding: 5,
+                  marginRight: 5,
+                }}
+              />
+              <View style={{ justifyContent: 'center' }}>
+                <Text
+                  style={[Styles.txt1, { color: '#f1781e', fontWeight: '600' }]}>
+                  Call
+                </Text>
+              </View>
+            </View>
+
+            <View style={{ flexDirection: 'row' }}>
+              <Icon
+                type={Icons.MaterialIcons}
+                name={'directions'}
+                size={22}
+                style={{
+                  backgroundColor: '#f1781e',
+                  borderRadius: 50,
+                  padding: 5,
+                  marginRight: 5,
+                }}
+                color={'white'}
+              />
+              <View style={{ justifyContent: 'center' }}>
+                <Text
+                  style={[Styles.txt1, { color: '#f1781e', fontWeight: '600' }]}>
+                  Directions
+                </Text>
+              </View>
+            </View>
+
+            <View style={{ flexDirection: 'row' }}>
+              <Icon
+                type={Icons.Ionicons}
+                name={'share-social-outline'}
+                size={22}
+                style={{
+                  backgroundColor: '#f1781e',
+                  borderRadius: 100,
+                  padding: 5,
+                  marginRight: 5,
+                }}
+                color={'white'}
+              />
+              <View style={{ justifyContent: 'center' }}>
+                <Text
+                  style={[Styles.txt1, { color: '#f1781e', fontWeight: '600' }]}>
+                  Share
+                </Text>
+              </View>
+            </View>
+          </View>
+
+          {/*  */}
+
+          <View style={{ marginHorizontal: 15, marginTop: 10 }}>
+            <Text style={[Styles.txt1, { fontWeight: '600' }]}>OPERATION</Text>
+            <View style={{ flexDirection: 'row', marginTop: 5 }}>
+              <View>
+                {
+                  data.openNow ? <Text style={[Styles.txt1, { fontWeight: '600', color: 'green' }]}>
+                    Open Now •{' '}
+                  </Text> : <Text style={[Styles.txt1, { fontWeight: '600', color: 'red' }]}>
+                    Closed Now •{' '}
+                  </Text>
+                }
+              </View>
+              <Text
+                style={[Styles.txt1, { fontWeight: '500', color: '#777777' }]}>
+                10:00AM - 11:30PM
+              </Text>
+            </View>
+          </View>
+
+          {/*  */}
+
+
+        </View>
+
+        <TouchableOpacity
+
+
+          onPress={toggleModal}
+          style={{
+            backgroundColor: '#F0A936',
+            padding: 10,
+            marginHorizontal: 10,
+            borderRadius: 10,
+            elevation: 1,
+            marginBottom: 20,
+          }}>
+          <Text
+            style={{
+              color: 'white',
+              fontSize: 18,
+              fontWeight: '700',
+              letterSpacing: 0.17,
+              textAlign: 'center',
+            }}>
+            Book
+          </Text>
+        </TouchableOpacity>
+
+
+      </View>
 
       <Modal
         style={{
           marginHorizontal: 0,
           marginBottom: 0,
           marginTop: '40%',
-          // position:"absolute",
-          // bottom:0,
-          // flex:1
         }}
         isVisible={isModalVisible}
         hasBackdrop={true}>
@@ -125,7 +382,6 @@ function ModalTester({ navigation }) {
                 <Icon
                   type={Icons.Ionicons}
                   name={'close-circle-outline'}
-                  // name={'chevron-down-circle-outline'}
                   color="black"
                   size={27}
                 />
@@ -133,12 +389,17 @@ function ModalTester({ navigation }) {
             </View>
 
             <View>
-              <VNumber
-                onBackPress={() => {
-                  this.props.navigation.goBack();
-                }}
-                onSearchPress={() => { }}
-              />
+
+
+              <View style={vnStyles.container}>
+                <TextInput
+                  style={vnStyles.input}
+                  placeholder="Enter Vehicle Number"
+                  placeholderTextColor="#888"
+                  value={vehicleNo}
+                  onChangeText={(text) => setVehicleNo(text)}
+                />
+              </View>
             </View>
             <View>
               <Text
@@ -305,7 +566,20 @@ function ModalTester({ navigation }) {
             <TouchableOpacity
               onPress={() => {
                 toggleModal;
-                navigation.navigate('ReviewSm');
+                navigation.navigate('ReviewSm', {
+                  paymentData: {
+                    vehicleNo: vehicleNo,
+                    vehicleType: vehicleType,
+                    date: date,
+                    slot: slot,
+                    amount: amount,
+                    name: name,
+                    phoneNo: phoneNo,
+                    startTime: startTime,
+                    endTime: endTime,
+                    parkingComplex: parkingComplex
+                  }
+                });
               }}
 
               style={{
@@ -341,12 +615,75 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     width: 35,
     height: 35,
-    // alignSelf:"center",
-    // marginRight:5,
-    // top:10,
     position: 'absolute',
     marginLeft: 10,
     marginTop: 10,
     zIndex: 1,
+  },
+});
+
+
+const Styles = StyleSheet.create({
+  cont: {
+    backgroundColor: '#FDFAE7',
+    flex: 1,
+    justifyContent: 'space-between',
+  },
+  card: {
+    flex: 1,
+  },
+  cmplx: {
+    // width: winWidth,
+    // height: 200,
+
+    height: 235,
+    resizeMode: 'cover',
+  },
+  prkName: {
+    color: '#411609',
+    fontSize: 18,
+    fontWeight: '700',
+  },
+  txt1: {
+    color: 'black',
+    fontSize: 15,
+    // marginTop:5
+  },
+  indicators: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: 60,
+    alignSelf: 'center',
+    marginTop: 6,
+  },
+  circles: {
+    width: 8,
+    height: 8,
+    backgroundColor: 'orange',
+    borderRadius: 100,
+  },
+});
+
+
+const vnStyles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F3F2F3',
+    // backgroundColor: 'red',
+    borderRadius: 5,
+    // paddingVertical: 8,
+    paddingHorizontal: 12,
+    // margin: 10,
+    elevation: 1,
+    marginTop: 10,
+  },
+  icon: {
+    marginRight: 10,
+  },
+  input: {
+    flex: 1,
+    fontSize: 16,
+    color: '#333',
   },
 });

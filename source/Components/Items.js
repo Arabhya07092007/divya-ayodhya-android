@@ -7,7 +7,7 @@ export default Item = ({navigation, itemText, NavigateScreen, imgSource}) => {
     <View style={styles.cont}>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate('ParkingFeed');
+          navigation.navigate(NavigateScreen);
         }}
         style={{borderRadius: 20, backgroundColor:"#FDFAE7", elevation:2}}>
         <Image source={imgSource} style={styles.icon_base} />

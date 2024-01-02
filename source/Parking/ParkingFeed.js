@@ -9,23 +9,81 @@ import {
   ImageBackground,
   StatusBar,
 } from 'react-native';
-import {Dimensions} from 'react-native';
+import { Dimensions } from 'react-native';
 const winWidth = Dimensions.get('window').width;
 const winHeight = Dimensions.get('window').height;
 import SearchBar from '../Components/SearchBar';
 
 import parkingData from './data';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import database from '@react-native-firebase/database';
 
-function ParkingCard({item, navigation}) {
+export default class ParkingFeed extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      parkingComplexes: null,
+    };
+  }
+
+  componentDidMount() {
+    database()
+      .ref('/Parking/parkingComplexes')
+      .once('value')
+      .then((snapshot) => {
+        const data = snapshot.val();
+        // console.log(typeof data);
+        // console.log(data.length);
+        if (data) {
+          this.setState({ parkingComplexes: data });
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+  render() {
+    return (
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#FDFAE7', }}>
+        <StatusBar barStyle={'dark-content'} backgroundColor={'#FDFAE7'} />
+        <SearchBar onBackPress={() => { this.props.navigation.goBack() }} onSearchPress={() => { }} />
+
+        <View>
+          {
+            this.state.parkingComplexes ?
+              <FlatList
+                data={this.state.parkingComplexes}
+                keyExtractor={(item, index) => index.toString()}
+                renderItem={item => (
+                  <ParkingCard {...item} navigation={this.props.navigation} />
+                )}
+                style={{ backgroundColor: '#FDFAE7', }}
+              />
+              :
+              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center',  }}>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', color:"black" }}>Loading...</Text>
+              </View>
+          }
+        </View>
+      
+      </SafeAreaView>
+    );
+  }
+}
+
+
+function ParkingCard({ item, navigation }) {
   return (
     <TouchableOpacity
       onPress={() => {
-        navigation.navigate('ModalTester');
+        navigation.navigate('ModalTester', {parkingComplex: item});
+        // console.log(item);
+        // console.log(item.name);
+        // console.log(item.profilePic);
       }}
       style={{
         backgroundColor: 'white',
-        marginTop: 10,
+        marginBottom: 10,
         flexDirection: 'row',
         marginHorizontal: 10,
         padding: 10,
@@ -33,9 +91,9 @@ function ParkingCard({item, navigation}) {
         elevation: 2,
       }}>
       <ImageBackground
-        source={item.uri} // Replace with actual image source
+        source={{uri:item.profilePic}} // Replace with actual image source
         style={styles.image}
-        imageStyle={{borderRadius: 10}}>
+        imageStyle={{ borderRadius: 10 }}>
         <View
           style={{
             justifyContent: 'flex-end',
@@ -52,27 +110,27 @@ function ParkingCard({item, navigation}) {
               fontSize: 12,
               fontWeight: '700',
               paddingHorizontal: 4,
+              // borderWidth:1
             }}>
-            {item.charges}
+            {item.price}/hr
           </Text>
         </View>
       </ImageBackground>
 
-      <View style={{flex: 1, marginRight: 10}}>
-        <Text style={{color: 'black', fontSize: 18, fontWeight: 'bold'}}>
+      <View style={{ flex: 1, marginRight: 10 }}>
+        <Text style={{ color: 'black', fontSize: 16, fontWeight: 'bold' }}>
           {item.name}
         </Text>
-        {/* <Text style={{color:"black"}}>{item.address.length > 33 ? item.address.slice(0,30).trim() : null}</Text> */}
-        <Text style={{color: 'black'}}>{item.address}</Text>
-        <Text style={{color: 'black'}}>Distance: 1.5 miles </Text>
-        <View style={{flexDirection: 'row'}}>
-          <Text style={{color: 'black'}}>Spots Available: </Text>
-          <Text style={{color: 'darkgreen', fontWeight: '700'}}>
-            {item.availableSpots}
+        <Text style={{color:"black"}}>{item.address.length > 33 ? item.address.slice(0,40).trim() : null}..</Text>
+        {/* <Text style={{ color: 'black' }}>Distance: 1.5 miles </Text> */}
+        <View style={{ flexDirection: 'row' }}>
+          <Text style={{ color: 'black' }}>Spots Available: </Text>
+          <Text style={{ color: 'darkgreen', fontWeight: '700' }}>
+            {item.availableSlots}
           </Text>
         </View>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={[styles.button, {marginRight: 5}]}>
+          <TouchableOpacity style={[styles.button, { marginRight: 5 }]}>
             <Text style={styles.buttonText}>Call</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button}>
@@ -84,24 +142,6 @@ function ParkingCard({item, navigation}) {
   );
 }
 
-export default class ParkingFeed extends React.Component {
-  render() {
-    return (
-      <SafeAreaView style={{flex: 1, backgroundColor: '#FDFAE7',}}>
-        <StatusBar barStyle={'dark-content'} backgroundColor={'#FDFAE7'} />
-        <SearchBar onBackPress={() => {this.props.navigation.goBack()}} onSearchPress={() => {}} />
-        <FlatList
-          data={parkingData}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={item => (
-            <ParkingCard {...item} navigation={this.props.navigation} />
-          )}
-          style={{backgroundColor: '#FDFAE7',}}
-        />
-      </SafeAreaView>
-    );
-  }
-}
 
 const styles = StyleSheet.create({
   card: {
@@ -169,3 +209,4 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
 });
+

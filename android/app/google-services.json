@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "910813817712",
+    "firebase_url": "https://backendintegration-2fdc3-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "backendintegration-2fdc3",
+    "storage_bucket": "backendintegration-2fdc3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:910813817712:android:d7eb1e8a0b21d00dcb3db5",
+        "android_client_info": {
+          "package_name": "com.ayodhyadarshan"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCK8Y-ZyLzGj3p2ptQMinB-ES8e5TYNmHU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:910813817712:android:0469a3215c1667eecb3db5",
+        "android_client_info": {
+          "package_name": "com.backendintegration"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCK8Y-ZyLzGj3p2ptQMinB-ES8e5TYNmHU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
