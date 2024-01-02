@@ -11,13 +11,13 @@ import {
 } from 'react-native';
 import Caraosal from '../Components/Caraosel';
 import Item from '../Components/Items';
-import Icon, {Icons} from '../Components/Icons'
+import Icon, { Icons } from '../Components/Icons'
 import { ScrollView } from 'react-native-gesture-handler';
 
 export default class HomeScreen extends React.Component {
   render() {
     return (
-      <SafeAreaView style={{flex: 1}}>
+      <SafeAreaView style={{ flex: 1 }}>
         <ImageBackground
           source={require('../Assests/background.png')}
           style={styles.cont}>
@@ -25,17 +25,17 @@ export default class HomeScreen extends React.Component {
             barStyle={'dark-content'}
             backgroundColor={'#FFFEDE'}
           />
-          <View style={{flexDirection: 'row', marginTop: 20, justifyContent:"space-between"}}>
-            <View style={{flexDirection:'row'}}><Text style={{color: 'black', fontSize: 20, fontWeight: '700'}}>
+          <View style={{ flexDirection: 'row', marginTop: 20, justifyContent: "space-between" }}>
+            <View style={{ flexDirection: 'row' }}><Text style={{ color: 'black', fontSize: 20, fontWeight: '700' }}>
               Ayodhdya Darshan{' '}
             </Text>
-            <Image
-              source={require('../Assests/wave.png')}
-              style={{width: 30, height: 30}}
-            /></View>
+              <Image
+                source={require('../Assests/wave.png')}
+                style={{ width: 30, height: 30 }}
+              /></View>
 
-            <View style={{flexDirection:"row"}}>
-            <TouchableOpacity >
+            <View style={{ flexDirection: "row" }}>
+              <TouchableOpacity >
                 <Icon
                   type={Icons.Feather}
                   name={'search'}
@@ -43,7 +43,7 @@ export default class HomeScreen extends React.Component {
                   size={27}
                 />
               </TouchableOpacity>
-            <TouchableOpacity style={{marginLeft:10}}>
+              <TouchableOpacity style={{ marginLeft: 10 }}>
                 <Icon
                   type={Icons.Ionicons}
                   name={'notifications-outline'}
@@ -69,7 +69,7 @@ export default class HomeScreen extends React.Component {
                 navigation={this.props.navigation}
                 itemText={'Tourist Places'}
                 imgSource={require('../Assests/icon2.png')}
-                NavigateScreen={"ParkingFeed"}
+                NavigateScreen={"Touristfeed"}
               />
               <Item
                 navigation={this.props.navigation}
@@ -85,7 +85,7 @@ export default class HomeScreen extends React.Component {
               />
             </View>
 
-            <View style={[styles.itemSuperCont, {marginVertical: 5}]}>
+            <View style={[styles.itemSuperCont, { marginVertical: 5 }]}>
               <Item
                 navigation={this.props.navigation}
                 itemText={'E-Bus'}
@@ -142,21 +142,21 @@ export default class HomeScreen extends React.Component {
 
           <View style={styles.recommendations}>
 
-          <Text style={styles.heading}>Recommendations For You</Text>
+            <Text style={styles.heading}>Recommendations For You</Text>
 
-            <ScrollView horizontal={true} style={{marginHorizontal:-20, paddingLeft:18, paddingRight:50}}>
-              
-            <View style={styles.rmItem}>
-              <Text style={{color:"#B01432", fontWeight:"600"}}>Opal Tower</Text>
-              <Text style={{color:'black', fontWeight:"700", fontSize:16}}>Ram Mandir Parking</Text>
-              <Text style={{color:'#B01432', fontWeight:"700", marginTop:5}}>15 car spots available</Text>
-            </View>
+            <ScrollView horizontal={true} style={{ marginHorizontal: -20, paddingLeft: 18, paddingRight: 50 }}>
 
-            <View style={styles.rmItem}>
-              <Text style={{color:"#B01432", fontWeight:"600"}}>Opal Tower</Text>
-              <Text style={{color:'black', fontWeight:"700", fontSize:16}}>Hanuman Parking complex</Text>
-              <Text style={{color:'#B01432', fontWeight:"700", marginTop:5}}>15 car spots available</Text>
-            </View>
+              <View style={styles.rmItem}>
+                <Text style={{ color: "#B01432", fontWeight: "600" }}>Opal Tower</Text>
+                <Text style={{ color: 'black', fontWeight: "700", fontSize: 16 }}>Ram Mandir Parking</Text>
+                <Text style={{ color: '#B01432', fontWeight: "700", marginTop: 5 }}>15 car spots available</Text>
+              </View>
+
+              <View style={styles.rmItem}>
+                <Text style={{ color: "#B01432", fontWeight: "600" }}>Opal Tower</Text>
+                <Text style={{ color: 'black', fontWeight: "700", fontSize: 16 }}>Hanuman Parking complex</Text>
+                <Text style={{ color: '#B01432', fontWeight: "700", marginTop: 5 }}>15 car spots available</Text>
+              </View>
             </ScrollView>
 
           </View>
@@ -188,15 +188,15 @@ const styles = StyleSheet.create({
     // columnGap:10,
     justifyContent: 'space-between',
   },
-  rmItem:{
-    backgroundColor:"#F7CC2B",
-    borderRadius:20,
-    padding:10,
-    paddingHorizontal:20,
-    width:250,
-    elevation:1,
-    marginBottom:5,
-    marginLeft:3,
-    marginRight:10
+  rmItem: {
+    backgroundColor: "#F7CC2B",
+    borderRadius: 20,
+    padding: 10,
+    paddingHorizontal: 20,
+    width: 250,
+    elevation: 1,
+    marginBottom: 5,
+    marginLeft: 3,
+    marginRight: 10
   }
 });

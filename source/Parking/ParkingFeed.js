@@ -13,10 +13,9 @@ import { Dimensions } from 'react-native';
 const winWidth = Dimensions.get('window').width;
 const winHeight = Dimensions.get('window').height;
 import SearchBar from '../Components/SearchBar';
-
-import parkingData from './data';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import database from '@react-native-firebase/database';
+import { Parking } from '../Database/data';
 
 export default class ParkingFeed extends React.Component {
   constructor(props) {
@@ -26,46 +25,47 @@ export default class ParkingFeed extends React.Component {
     };
   }
 
-  componentDidMount() {
-    database()
-      .ref('/Parking/parkingComplexes')
-      .once('value')
-      .then((snapshot) => {
-        const data = snapshot.val();
-        // console.log(typeof data);
-        // console.log(data.length);
-        if (data) {
-          this.setState({ parkingComplexes: data });
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
+  // componentDidMount() {
+  //   database()
+  //     .ref('/Parking/parkingComplexes')
+  //     .once('value')
+  //     .then((snapshot) => {
+  //       const data = snapshot.val();
+  //       // console.log(typeof data);
+  //       // console.log(data.length);
+  //       if (data) {
+  //         this.setState({ parkingComplexes: data });
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }
   render() {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: '#FDFAE7', }}>
         <StatusBar barStyle={'dark-content'} backgroundColor={'#FDFAE7'} />
         <SearchBar onBackPress={() => { this.props.navigation.goBack() }} onSearchPress={() => { }} />
 
-        <View>
+        {/* <View>
           {
-            this.state.parkingComplexes ?
-              <FlatList
-                data={this.state.parkingComplexes}
-                keyExtractor={(item, index) => index.toString()}
-                renderItem={item => (
-                  <ParkingCard {...item} navigation={this.props.navigation} />
-                )}
-                style={{ backgroundColor: '#FDFAE7', }}
-              />
-              :
-              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center',  }}>
-                <Text style={{ fontSize: 20, fontWeight: 'bold', color:"black" }}>Loading...</Text>
+            this.state.parkingComplexes ? */}
+        <FlatList
+          // data={this.state.parkingComplexes}
+          data={Parking}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={item => (
+            <ParkingCard {...item} navigation={this.props.navigation} />
+          )}
+          style={{ backgroundColor: '#FDFAE7', }}
+        />
+        {/* :
+              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', color: "black" }}>Loading...</Text>
               </View>
           }
-        </View>
-      
+        </View> */}
+
       </SafeAreaView>
     );
   }
@@ -76,7 +76,7 @@ function ParkingCard({ item, navigation }) {
   return (
     <TouchableOpacity
       onPress={() => {
-        navigation.navigate('ModalTester', {parkingComplex: item});
+        navigation.navigate('ModalTester', { parkingComplex: item });
         // console.log(item);
         // console.log(item.name);
         // console.log(item.profilePic);
@@ -91,7 +91,7 @@ function ParkingCard({ item, navigation }) {
         elevation: 2,
       }}>
       <ImageBackground
-        source={{uri:item.profilePic}} // Replace with actual image source
+        source={{ uri: item.profilePic }} // Replace with actual image source
         style={styles.image}
         imageStyle={{ borderRadius: 10 }}>
         <View
@@ -121,7 +121,7 @@ function ParkingCard({ item, navigation }) {
         <Text style={{ color: 'black', fontSize: 16, fontWeight: 'bold' }}>
           {item.name}
         </Text>
-        <Text style={{color:"black"}}>{item.address.length > 33 ? item.address.slice(0,40).trim() : null}..</Text>
+        <Text style={{ color: "black" }}>{item.address.length > 33 ? item.address.slice(0, 40).trim() : null}..</Text>
         {/* <Text style={{ color: 'black' }}>Distance: 1.5 miles </Text> */}
         <View style={{ flexDirection: 'row' }}>
           <Text style={{ color: 'black' }}>Spots Available: </Text>

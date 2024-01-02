@@ -43,6 +43,8 @@ export default function Emergency({ navigation }) {
         );
     };
 
+
+
     function pushComplaint(name, phoneNo, address, complaint) {
 
         const data = {

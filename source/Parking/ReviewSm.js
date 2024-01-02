@@ -135,8 +135,8 @@ export default function ReviewSm({ navigation, route }) {
 
       <TouchableOpacity
         onPress={() => {
-          // handlePayment();
-          navigation.navigate("Ticket", {paymentData: paymentData})
+          handlePayment();
+          navigation.navigate("Ticket", { paymentData: paymentData })
         }}
         style={{
           backgroundColor: '#F0A936',

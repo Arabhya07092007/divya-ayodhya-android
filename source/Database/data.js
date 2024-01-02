@@ -2,7 +2,7 @@ const Parking = [
     {
         uid: "srmjnmbh18",
         password: "srm123",
-        name: "Sri Ram Janmabhoomi Parking Complex",
+        name: "Sri Ram Janmabhoomi Parking ",
         address: "Sri Ram Janmabhoomi Parking Complex, Ayodhya, Uttar Pradesh 224123",
         coordinate: {
             latitude: 26.7964,
@@ -27,10 +27,10 @@ const Parking = [
         profilePic: "https://raw.githubusercontent.com/Arabhya07092007/AFA-assests/main/7.png",
     },
     {
-        uid: "srmjnmbh18",
+        uid: "chp121",
         password: "srm123",
-        name: "Sri Ram Janmabhoomi Parking Complex",
-        address: "Sri Ram Janmabhoomi Parking Complex, Ayodhya, Uttar Pradesh 224123",
+        name: "Circuit House Parking",
+        address: "Vikas Bhawan, Ayodhya, Uttar Pradesh 224123",
         coordinate: {
             latitude: 26.7964,
             longitude: 82.1991
@@ -38,8 +38,8 @@ const Parking = [
         operationTime: {
         },
         openNow: true,
-        totalSlots: 100,
-        availableSlots: 100,
+        totalSlots: 350,
+        availableSlots: 289,
         totalPayment: 0,
         balance: 100,
         images: [
@@ -50,14 +50,14 @@ const Parking = [
             "https://raw.githubusercontent.com/Arabhya07092007/AFA-assests/main/5.png",
             "https://raw.githubusercontent.com/Arabhya07092007/AFA-assests/main/6.png",
         ],
-        price: 15,
+        price: 60,
         profilePic: "https://raw.githubusercontent.com/Arabhya07092007/AFA-assests/main/8.png",
     },
     {
-        uid: "srmjnmbh18",
+        uid: "chp434121",
         password: "srm123",
-        name: "Sri Ram Janmabhoomi Parking Complex",
-        address: "Sri Ram Janmabhoomi Parking Complex, Ayodhya, Uttar Pradesh 224123",
+        name: "Arundhati Bahumanzila Parking",
+        address: "Vikas Bhawan, Ayodhya, Uttar Pradesh 224123",
         coordinate: {
             latitude: 26.7964,
             longitude: 82.1991
@@ -65,8 +65,8 @@ const Parking = [
         operationTime: {
         },
         openNow: true,
-        totalSlots: 100,
-        availableSlots: 100,
+        totalSlots: 350,
+        availableSlots: 781,
         totalPayment: 0,
         balance: 100,
         images: [
@@ -77,14 +77,14 @@ const Parking = [
             "https://raw.githubusercontent.com/Arabhya07092007/AFA-assests/main/5.png",
             "https://raw.githubusercontent.com/Arabhya07092007/AFA-assests/main/6.png",
         ],
-        price: 15,
+        price: 60,
         profilePic: "https://raw.githubusercontent.com/Arabhya07092007/AFA-assests/main/9.png",
     },
     {
-        uid: "srmjnmbh18",
+        uid: "ufrfewfjkw123131",
         password: "srm123",
-        name: "Sri Ram Janmabhoomi Parking Complex",
-        address: "Sri Ram Janmabhoomi Parking Complex, Ayodhya, Uttar Pradesh 224123",
+        name: "Ram Seva Parking",
+        address: "Vikas Bhawan, Ayodhya, Uttar Pradesh 224123",
         coordinate: {
             latitude: 26.7964,
             longitude: 82.1991
@@ -92,8 +92,8 @@ const Parking = [
         operationTime: {
         },
         openNow: true,
-        totalSlots: 100,
-        availableSlots: 100,
+        totalSlots: 350,
+        availableSlots: 219,
         totalPayment: 0,
         balance: 100,
         images: [
@@ -104,37 +104,9 @@ const Parking = [
             "https://raw.githubusercontent.com/Arabhya07092007/AFA-assests/main/5.png",
             "https://raw.githubusercontent.com/Arabhya07092007/AFA-assests/main/6.png",
         ],
-        price: 15,
+        price: 60,
         profilePic: "https://raw.githubusercontent.com/Arabhya07092007/AFA-assests/main/10.png",
     },
-    {
-        uid: "srmjnmbh18",
-        password: "srm123",
-        name: "Sri Ram Janmabhoomi Parking Complex",
-        address: "Sri Ram Janmabhoomi Parking Complex, Ayodhya, Uttar Pradesh 224123",
-        coordinate: {
-            latitude: 26.7964,
-            longitude: 82.1991
-        },
-        operationTime: {
-        },
-        openNow: true,
-        totalSlots: 100,
-        availableSlots: 100,
-        totalPayment: 0,
-        balance: 100,
-        images: [
-            "https://raw.githubusercontent.com/Arabhya07092007/AFA-assests/main/1.png",
-            "https://raw.githubusercontent.com/Arabhya07092007/AFA-assests/main/2.png",
-            "https://raw.githubusercontent.com/Arabhya07092007/AFA-assests/main/3.png",
-            "https://raw.githubusercontent.com/Arabhya07092007/AFA-assests/main/4.png",
-            "https://raw.githubusercontent.com/Arabhya07092007/AFA-assests/main/5.png",
-            "https://raw.githubusercontent.com/Arabhya07092007/AFA-assests/main/6.png",
-        ],
-        price: 15,
-        profilePic: "https://raw.githubusercontent.com/Arabhya07092007/AFA-assests/main/11.png",
-    },
-
 
 ];
 
