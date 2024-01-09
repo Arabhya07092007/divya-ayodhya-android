@@ -10,7 +10,7 @@ import {
     StatusBar,
     StyleSheet,
     TextInput,
-    ScrollView
+    ScrollView,
 } from 'react-native';
 import Modal from 'react-native-modal';
 import Icon, { Icons } from '../Components/Icons';
@@ -21,8 +21,9 @@ import data from '../Database/TouristfeedData';
 
 export default function TouristPlace({ navigation, route }) {
     const { item } = route.params;
+    // const item = data[1];
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: "#FDFAE7" }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#FDFAE7' }}>
             <StatusBar barStyle={'dark-content'} backgroundColor={'#FDFAE7'} />
             <TouchableOpacity
                 style={styles.backdrop}
@@ -35,29 +36,148 @@ export default function TouristPlace({ navigation, route }) {
                 />
             </TouchableOpacity>
 
-            <View style={{ width: winWidth, }}>
-                <Image
-                    source={item.uri2}
-                    style={Styles.cmplx}
-                />
+
+
+            <View style={{ width: winWidth }}>
+                <Image source={item.uri2} style={Styles.cmplx} />
             </View>
 
-            <ScrollView style={{ flex: 1, backgroundColor: '#FDFAE7', paddingTop: 10, marginHorizontal: 10 }}>
+            <ScrollView style={{ paddingHorizontal: 10, paddingTop: 10 }}>
+                <View style={{ flexDirection: 'row' }}>
+                    <View style={{ flex: 1 }}>
+                        <Text style={{ color: 'black', fontSize: 20, fontWeight: '600' }}>
+                            {item.name}
+                        </Text>
+
+                        <Text style={{ color: '#616161', fontSize: 16, fontWeight: '400' }}>
+                            {/* Tulsi Nagar, Ayodhya, Uttar Pradesh */}
+                            {item.address}
+                        </Text>
+                    </View>
+                    <View style={{ alignItems: 'center', justifyContent: "center" }}>
+                        <TouchableOpacity style={{}}>
+                            <Icon
+                                type={Icons.Ionicons}
+                                name={'heart-outline'}
+                                color="#B01432"
+                                size={27}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                </View>
+
+                <View style={{ flexDirection: 'row', marginTop: 10, justifyContent: "space-between" }}>
+                    <TouchableOpacity
+                        style={{
+                            flexDirection: 'row',
+                            paddingHorizontal: 10,
+                            paddingVertical: 7,
+                            alignItems: 'center',
+                            backgroundColor: '#B01432',
+                            borderRadius: 20,
+                            elevation: 1,
+                        }}>
+                        <Icon
+                            type={Icons.Ionicons}
+                            name={'navigate'}
+                            color="white"
+                            size={20}
+                        />
+                        <Text
+                            style={{
+                                color: 'white',
+                                fontSize: 14,
+                                fontWeight: '400',
+                                marginLeft: 2,
+                            }}>
+                            Direction
+                        </Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={{
+                            flexDirection: 'row',
+                            paddingHorizontal: 10,
+                            paddingVertical: 5,
+                            alignItems: 'center',
+                            borderColor: '#B01432',
+                            borderRadius: 20,
+                            elevation: 1,
+                            borderWidth: 1.5,
+                            backgroundColor: '#FDFAE7',
+                        }}>
+                        <Icon
+                            type={Icons.Feather}
+                            name={'clock'}
+                            color="#B01432"
+                            size={20}
+                        />
+                        <Text
+                            style={{
+                                color: '#B01432',
+                                fontSize: 14,
+                                fontWeight: '400',
+                                marginLeft: 5,
+                            }}>
+                            8AM - 10PM
+                        </Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            borderColor: '#B01432',
+                            borderRadius: 50,
+                            elevation: 1,
+                            borderWidth: 1.5,
+                            backgroundColor: '#FDFAE7',
+                            padding: 5
+                        }}>
+                        <Image source={require("../Assests/wheelchair.png")} style={{ width: 22, height: 22 }} />
+
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            borderColor: '#B01432',
+                            borderRadius: 50,
+                            elevation: 1,
+                            borderWidth: 1.5,
+                            backgroundColor: '#FDFAE7',
+                            paddingHorizontal: 7,
+                            paddingVertical: 5
+                        }}>
+                        <Image source={require("../Assests/parking.png")} style={{ width: 18, height: 18 }} />
+
+                    </TouchableOpacity>
+                </View>
+
+                <View style={{ marginTop: 10 }}>
+                    <Text style={{ color: 'black', fontSize: 14, lineHeight: 19 }}>
+                        {item.description}
+                    </Text>
+                </View>
+
+            </ScrollView>
+
+            {/* <ScrollView style={{ flex: 1, backgroundColor: '#FDFAE7', paddingTop: 10, marginHorizontal: 10 }}>
                 <Text style={{ color: 'black', fontSize: 18, fontWeight: '600' }}>
                     {item.name}
                 </Text>
                 <Text style={{ color: 'black', fontSize: 14, fontWeight: '500' }}>
                     {item.description}
                 </Text>
-            </ScrollView>
+            </ScrollView> */}
         </SafeAreaView>
     );
 }
 
-
 const styles = StyleSheet.create({
     backdrop: {
-        backgroundColor: '#feeed6',
+        backgroundColor: '#FDFAE7',
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 100,
@@ -68,8 +188,8 @@ const styles = StyleSheet.create({
         marginTop: 10,
         zIndex: 1,
     },
-});
 
+});
 
 const Styles = StyleSheet.create({
     cont: {
@@ -84,7 +204,9 @@ const Styles = StyleSheet.create({
         // width: winWidth,
         // height: 200,
 
-        height: 260, width: "auto", resizeMode: "cover",
+        height: 260,
+        width: 'auto',
+        resizeMode: 'cover',
     },
     prkName: {
         color: '#411609',
@@ -110,4 +232,3 @@ const Styles = StyleSheet.create({
         borderRadius: 100,
     },
 });
-
