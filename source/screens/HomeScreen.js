@@ -69,7 +69,7 @@ export default class HomeScreen extends React.Component {
                 navigation={this.props.navigation}
                 itemText={'Tourist Places'}
                 imgSource={require('../Assests/icon2.png')}
-                NavigateScreen={"Touristfeed"}
+                NavigateScreen={"BottomTabNav"}
               />
               <Item
                 navigation={this.props.navigation}

@@ -15,9 +15,12 @@ import ModalTester from '../Parking/ModalTester';
 import Emergency from '../screens/Emergency';
 import Touristfeed from '../screens/Touristfeed';
 import TouristPlace from '../screens/TouristPlace';
+import IconsCheck from '../SvgIcons/IconsCheck';
+import BottomTabNav from './BottomTabNav';
 
 
 import Firestore from '../Payment/Firestore';
+
 
 const Stack = createStackNavigator();
 
@@ -33,7 +36,8 @@ function StackNav() {
       }}>
       <Stack.Screen name="Ayodhdya Darshan" component={HomeScreen} />
       <Stack.Screen name="Emergency" component={Emergency} />
-      <Stack.Screen name="Touristfeed" component={Touristfeed} />
+      <Stack.Screen name="BottomTabNav" component={BottomTabNav} />
+      {/* <Stack.Screen name="Touristfeed" component={Touristfeed} /> */}
       <Stack.Screen name="TouristPlace" component={TouristPlace} />
       <Stack.Screen name="ParkingFeed" component={ParkingFeed} />
       <Stack.Screen name="ModalTester" component={ModalTester} />
