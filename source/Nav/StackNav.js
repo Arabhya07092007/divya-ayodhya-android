@@ -17,7 +17,9 @@ import Touristfeed from '../screens/Touristfeed';
 import TouristPlace from '../screens/TouristPlace';
 import IconsCheck from '../SvgIcons/IconsCheck';
 import BottomTabNav from './BottomTabNav';
-
+import RamMandir from '../screens/RamMandir';
+import Hotels from '../screens/Hotels';
+import Embed from '../screens/Embed';
 
 import Firestore from '../Payment/Firestore';
 
@@ -34,10 +36,15 @@ function StackNav() {
         headerShown: false,
         headerShadowVisible: true,
       }}>
+
+
       <Stack.Screen name="Ayodhdya Darshan" component={HomeScreen} />
+      <Stack.Screen name="Hotels" component={Hotels} />
+      <Stack.Screen name="Embed" component={Embed} />
       <Stack.Screen name="Emergency" component={Emergency} />
       <Stack.Screen name="BottomTabNav" component={BottomTabNav} />
-      {/* <Stack.Screen name="Touristfeed" component={Touristfeed} /> */}
+      <Stack.Screen name="RamMandir" component={RamMandir} />
+      <Stack.Screen name="Touristfeed" component={Touristfeed} />
       <Stack.Screen name="TouristPlace" component={TouristPlace} />
       <Stack.Screen name="ParkingFeed" component={ParkingFeed} />
       <Stack.Screen name="ModalTester" component={ModalTester} />

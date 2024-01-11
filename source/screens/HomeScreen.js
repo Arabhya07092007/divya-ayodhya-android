@@ -63,7 +63,7 @@ export default class HomeScreen extends React.Component {
                 navigation={this.props.navigation}
                 itemText={'Ram Mandir'}
                 imgSource={require('../Assests/icon1.png')}
-                NavigateScreen={"ParkingFeed"}
+                NavigateScreen={"RamMandir"}
               />
               <Item
                 navigation={this.props.navigation}
@@ -75,7 +75,7 @@ export default class HomeScreen extends React.Component {
                 navigation={this.props.navigation}
                 itemText={'Tickets'}
                 imgSource={require('../Assests/icon3.png')}
-                NavigateScreen={"ParkingFeed"}
+              // NavigateScreen={"ParkingFeed"}
               />
               <Item
                 navigation={this.props.navigation}
@@ -90,25 +90,25 @@ export default class HomeScreen extends React.Component {
                 navigation={this.props.navigation}
                 itemText={'E-Bus'}
                 imgSource={require('../Assests/icon5.png')}
-                NavigateScreen={"ParkingFeed"}
+              // NavigateScreen={"ParkingFeed"}
               />
               <Item
                 navigation={this.props.navigation}
                 itemText={'Wheel Chair'}
                 imgSource={require('../Assests/icon6.png')}
-                NavigateScreen={"ParkingFeed"}
+              // NavigateScreen={"ParkingFeed"}
               />
               <Item
                 navigation={this.props.navigation}
                 itemText={'Trips'}
                 imgSource={require('../Assests/icon7.png')}
-                NavigateScreen={"ParkingFeed"}
+              // NavigateScreen={"ParkingFeed"}
               />
               <Item
                 navigation={this.props.navigation}
                 itemText={'Hotels'}
                 imgSource={require('../Assests/icon8.png')}
-                NavigateScreen={"ParkingFeed"}
+                NavigateScreen={"Hotels"}
               />
             </View>
 
@@ -123,19 +123,19 @@ export default class HomeScreen extends React.Component {
                 navigation={this.props.navigation}
                 itemText={'Events'}
                 imgSource={require('../Assests/icon10.png')}
-                NavigateScreen={"ParkingFeed"}
+              // NavigateScreen={"ParkingFeed"}
               />
               <Item
                 navigation={this.props.navigation}
                 itemText={'Lounge'}
                 imgSource={require('../Assests/icon11.png')}
-                NavigateScreen={"ParkingFeed"}
+              // NavigateScreen={"ParkingFeed"}
               />
               <Item
                 navigation={this.props.navigation}
                 itemText={'History'}
                 imgSource={require('../Assests/icon12.png')}
-                NavigateScreen={"ParkingFeed"}
+              // NavigateScreen={"ParkingFeed"}
               />
             </View>
           </View>

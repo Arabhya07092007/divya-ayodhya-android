@@ -1,15 +1,26 @@
 import * as React from 'react';
-import {Text, Image, StyleSheet, View, TouchableOpacity} from 'react-native';
-import {SvgUri} from 'react-native-svg';
+import { Text, Image, StyleSheet, View, TouchableOpacity, ToastAndroid } from 'react-native';
+import { SvgUri } from 'react-native-svg';
 
-export default Item = ({navigation, itemText, NavigateScreen, imgSource}) => {
+export default Item = ({ navigation, itemText, NavigateScreen, imgSource }) => {
+
+  const showToast = () => {
+    ToastAndroid.showWithGravity(
+      'This feature is under development.',
+      ToastAndroid.LONG,
+      ToastAndroid.BOTTOM,
+    );
+  };
   return (
     <View style={styles.cont}>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate(NavigateScreen);
+          NavigateScreen
+            ? navigation.navigate(NavigateScreen)
+            : showToast();
+
         }}
-        style={{borderRadius: 20, backgroundColor:"#FDFAE7", elevation:2}}>
+        style={{ borderRadius: 20, backgroundColor: "#FDFAE7", elevation: 2 }}>
         <Image source={imgSource} style={styles.icon_base} />
       </TouchableOpacity>
       <Text style={styles.itemTxt}>{itemText}</Text>
