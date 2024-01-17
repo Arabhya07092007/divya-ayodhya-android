@@ -7,18 +7,9 @@ function Hotels({ navigation, route }) {
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#FDFAE7' }}>
             <StatusBar barStyle={'dark-content'} backgroundColor={'#FDFAE7'} />
-            <TouchableOpacity
-                style={styles.backdrop}
-                onPress={() => navigation.goBack()}>
-                <Icon
-                    type={Icons.Ionicons}
-                    name={'arrow-back-outline'}
-                    color="#411609"
-                    size={25}
-                />
-            </TouchableOpacity>
 
-            <WebView source={{ uri: "https://holyayodhya.com/" }} />
+
+            <WebView source={{ uri: "https://arabhya07092007.github.io/Parking/" }} />
         </SafeAreaView>
     );
 };
